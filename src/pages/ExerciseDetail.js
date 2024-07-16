@@ -7,7 +7,7 @@ import ExerciseVideo from '../components/ExerciseVideo';
 
 
 const ExerciseDetail = () => {
-  
+
 const [exerciseDetail, setExerciseDetail] = useState(null);
 const [youtubeVideos, setYoutubeVideos] = useState([]);
 const {id} = useParams();
@@ -23,6 +23,7 @@ useEffect(() => {
       const youtubeData = await fetchData(`${youtubeUrl}/search?query=${e.name}`, youtubeOptions);
       setYoutubeVideos(youtubeData.contents);
       
+      document.title = "Health & Fitness Hub";
     } 
     catch (error) {
       console.error('Failed to fetch exercise details');
@@ -32,7 +33,6 @@ useEffect(() => {
   fetchExerciseData();
   
 }, [id]);
-
 
   return (
     <div className=' '>

@@ -5,6 +5,8 @@ import equipmentImage from '../assets/icons/equipment.png';
 
 const Detail = ({exerciseDetail}) => {
 
+  
+
 if (!exerciseDetail) {
   return <div>Loading...</div>;
 }

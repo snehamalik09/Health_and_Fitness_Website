@@ -12,9 +12,9 @@ const ExerciseCard = ( {exercise} ) => {
   }
 
   return (
-    <div className='border-b-2  border-black'>
+    <div className=' '>
       <Link to={`/exercise/${exercise.id}`} >
-      <div className='w-72 h-48 p-2 border-4 border-[#f7e4e8]'>
+      <div className='w-72 h-48 p-2 border-4 border-black'>
           <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" className='w-full h-full object-cover' />
         </div>        
       </Link>
@@ -30,4 +30,3 @@ const ExerciseCard = ( {exercise} ) => {
 export default ExerciseCard
 
 
-// large names of buttons are not ruining the alignment, 

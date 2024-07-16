@@ -15,6 +15,7 @@ const Exercise = ({setExercises, bodyPart, exercises}) => {
         exerciseData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
       }
       setExercises(exerciseData);
+
     };
   
     fetchExcecisesData();
@@ -33,8 +34,9 @@ const Exercise = ({setExercises, bodyPart, exercises}) => {
   const currentExercises = exercises.slice(firstIndexofExercise, lastIndexofExercise);
 
   return (
-    <div name="exercise" id="exercise" className='mx-[5%] flex flex-col justify-center '>
-      <h1 className='font-normal text-3xl'>{exercises && exercises.length > 0 ? "Showing Results ......" : "No Results!!! try with another keyword"}</h1>
+    <div name="exercise" id="exercise" className='mx-[5%] flex flex-col justify-center overflow-x-hidden'>
+      <h1 className='font-normal text-3xl'>{exercises && exercises.length > 0 ? "Search Results ......" : " Search Results ...... "}</h1>
+       <p className='font-normal text-red-600 mt-5'> {exercises && exercises.length>0 ? "Click on the exercise to view details" : "No Results!!! try with another keyword"} </p>
       <div className='grid grid-cols-3 gap-24 p-20 m-10 mt-0'>
         {
           currentExercises.map((item) => (
@@ -43,6 +45,7 @@ const Exercise = ({setExercises, bodyPart, exercises}) => {
       </div>
       <Stack mt="100px" alignItems="center" justifyContent="center" width="100%">
         {exercises.length > 9 && (
+          <a href="#exercise">
           <Pagination
             color="standard"
             shape="rounded"
@@ -52,6 +55,7 @@ const Exercise = ({setExercises, bodyPart, exercises}) => {
             onChange={paginate}
             size="large"
           />
+          </a>
         )}
       </Stack>
     </div>

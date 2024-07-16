@@ -30,18 +30,22 @@ const SearchExercise = ({bodyPart, setBodyPart, setExercises} ) => {
     
   }
   return (
-    <div className='flex flex-col justify-center text-center mt-[8%]'>
+    <div className='flex flex-col justify-center text-center mt-[10%] overflow-x-hidden'>
       <div className=''>
       <h1 className='text-4xl tracking-wide font-semibold'>Awesome Exercises You <br/> Should Know! </h1>   <br/> <br/>
       <div>
-        <input type="text" value={search} placeholder="Search Exercises" onChange = {(e) => {setSearch(e.target.value.toLowerCase())}} className='w-[60%] p-3 border-white'></input>
+        <input type="text" value={search} placeholder="Search Exercises" onChange = {(e) => {setSearch(e.target.value.toLowerCase())}} 
+        className='w-[60%] p-3 border-2 border-red-600 rounded-md'></input>
         
-        <a href="#exercise"> <button onClick={handleSearch} className='py-3 px-8 bg-red-600 rounded-sm text-white text-lg'> Search </button>   </a>
+        <button onClick={handleSearch} 
+        className='py-2 px-7 bg-red-600 rounded-sm border-2 border-red-600 text-white text-lg transition-all duration-300 delay-50 hover:rounded-md hover:text-red-600 hover:text-bold hover:bg-[#FFFAFB]'> 
+        Search </button>  
+
       </div>
       
       </div>
 
-      <div className=' my-20 mx-20'>
+      <div className=' my-20 mx-20 overflow-auto'>
         <HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart} />
       </div>
 

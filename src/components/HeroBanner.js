@@ -1,17 +1,54 @@
-import React from 'react'
-import HeroImage from '../assets/images/banner.png'
+import React, { useEffect, useState } from 'react';
+import banner1 from '../assets/images/banner.png';
+import banner2 from '../assets/images/banner2.jpg';
+import banner3 from '../assets/images/banner3.jpg';
+import banner4 from '../assets/images/banner4.jpg';
+import banner5 from '../assets/images/banner5.jpg';
+
+const banners = [
+  {
+    src : banner2,
+    id : 1
+  },
+  {
+    src : banner1,
+    id : 2
+  },
+  {
+    src : banner3,
+    id : 3
+  },
+  {
+    src : banner4, 
+    id : 4
+  },
+  {
+    src : banner5, 
+    id : 5
+  },
+]
 
 const HeroBanner = () => {
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+
+  const interval = useEffect(()=>{
+    setInterval(()=>{
+      setCurrentBannerIndex((prevIndex) => (prevIndex+1) % (banners.length))
+    }, 5000)
+
+    return() => clearInterval(interval);
+  }, []);
+
   return (
-    <div id="HeroBanner" >
-      <div className='p-28 leading-relaxed'>
-        <h2 className='text-3xl text-red-600 font-semibold'> Fitness Club </h2> <br/>
-        <h1 className='text-5xl font-semibold'> Sweat, Smile <br/> and repeat <br/> </h1> <br/>
+    <div id="HeroBanner" className='overflow-x-hidden'>
+      <div className='p-28 leading-relaxed overflow-x-hidden'>
+        <h2 className='text-3xl text-red-600 font-bold'> Health & Fitness Hub </h2> <br/>
+        <h1 className='text-4xl font-semibold'> Sweat, Smile <br/> and repeat <br/> </h1> <br/>
         <p className='text-lg'>Check out the most effective exercises personalized to you.</p> <br/> <br/>
         <button className='p-3 bg-red-600 rounded-md text-white text-lg border-2 border-red-600
         transition-all duration-300 delay-150 hover:text-red-600 hover:text-bold hover:bg-[#FFFAFB]'> 
         <a href="#exercise"> Explore Exercises</a> </button>
-        <img src={HeroImage} alt="Banner" className='absolute right-20 top-0 h-screen' />
+        <img key={banners[currentBannerIndex].id} src={banners[currentBannerIndex].src} alt="Banner" className='absolute right-20 top-0 h-screen' />        
       </div>
     
     </div>

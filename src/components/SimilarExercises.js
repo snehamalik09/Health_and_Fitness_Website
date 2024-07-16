@@ -37,6 +37,8 @@ const SimilarExercises = ({exerciseDetail}) => {
   },[exerciseDetail]);
 
 
+
+
   return (
     <div>
       <div className='flex flex-col gap-20 m-12 mb-0 overflow-x-auto relative'> 
@@ -44,7 +46,7 @@ const SimilarExercises = ({exerciseDetail}) => {
         <div className='flex flex-row gap-[10%] mb-10'>
         {
           similarTargetExercise.map((item) => (
-              <ExerciseCard key={item.id} exercise ={item} />
+               <ExerciseCard key={item.id} exercise ={item} />
           ))}
       </div>  
       </div>
