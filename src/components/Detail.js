@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import BodyPartImage from '../assets/icons/body-part.png';
 import targetImage from '../assets/icons/target.png';
 import equipmentImage from '../assets/icons/equipment.png';
