@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <div id="navbar" className='w-[100%]'>
-    <div className='w-[50%] flex items-center justify-around py-10 '>
+    <div className='w-[100%] md:w-[50%] flex items-center justify-around py-10 '>
     <div>
       <Link to="/"> <img src={Logo} alt="Logo" width="58" /> </Link>
 

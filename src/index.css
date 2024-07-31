@@ -5,3 +5,7 @@
 #root{
     background-color: #FFFAFB;
 }
+
+html{
+    scroll-behavior: smooth;
+}

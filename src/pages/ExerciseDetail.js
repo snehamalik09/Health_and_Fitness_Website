@@ -23,7 +23,6 @@ useEffect(() => {
       const youtubeData = await fetchData(`${youtubeUrl}/search?query=${e.name}`, youtubeOptions);
       setYoutubeVideos(youtubeData.contents);
       
-      document.title = "Health & Fitness Hub";
     } 
     catch (error) {
       console.error('Failed to fetch exercise details');

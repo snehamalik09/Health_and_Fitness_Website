@@ -6,7 +6,7 @@ const SimilarExercises = ({exerciseDetail}) => {
 
   const [similarTargetExercise, setSimilarTargetExercise] = useState([]);
   const [similarEquipmentExercise, setSimilarEquipmentExercise] = useState([]);
-  
+  const [isLargeScreen, setLargeScreen] = useState(window.matchMedia('(min-width:768px)'));
   
   useEffect(() => {
 
@@ -37,25 +37,45 @@ const SimilarExercises = ({exerciseDetail}) => {
   },[exerciseDetail]);
 
 
+  useEffect(()=>{
+    const mediaquery = window.matchMedia('(min-width:768px)');
+
+    const updateScreenSize = (e) => {
+      setLargeScreen(e.matches);
+    }
+
+    updateScreenSize(mediaquery);
+
+    mediaquery.addEventListener('change', updateScreenSize);
+
+    return () => {
+      mediaquery.removeEventListener('change', updateScreenSize);
+    };
+  });
+
+  const displayedTargetExercises = isLargeScreen ? similarTargetExercise : similarTargetExercise.slice(0, 5);
+  const displayedEquipmentExercises = isLargeScreen ? similarEquipmentExercise : similarEquipmentExercise.slice(0, 5);
+
+
 
 
   return (
     <div>
       <div className='flex flex-col gap-20 m-12 mb-0 overflow-x-auto relative'> 
       <div className='sticky left-0'> <h1 className='font-bold text-2xl tracking-wider text-red-600'>Similar <span className='text-black'>Target</span> Exercises</h1> </div> 
-        <div className='flex flex-row gap-[10%] mb-10'>
+        <div className='grid grid-cols-2 gap-5 md:flex md:flex-row md:gap-[10%] md:mb-10'>
         {
-          similarTargetExercise.map((item) => (
+          displayedTargetExercises.map((item) => (
                <ExerciseCard key={item.id} exercise ={item} />
           ))}
       </div>  
       </div>
 
       <div className='flex flex-col gap-20 m-12 mb-0 overflow-x-auto relative'> 
-      <div className='sticky left-0'> <h1 className='font-bold text-2xl tracking-wider text-red-600'>Similar <span className='text-black'>Target</span> Exercises</h1> </div> 
-        <div className='flex flex-row gap-[10%] mb-10'>
+      <div className='sticky left-0'> <h1 className='font-bold text-2xl tracking-wider text-red-600'>Similar <span className='text-black'>Equipment</span> Exercises</h1> </div> 
+        <div className='grid grid-cols-2 gap-5 md:flex md:flex-row md:gap-[10%] md:mb-10'>
         {
-          similarEquipmentExercise.map((item) => (
+          displayedEquipmentExercises.map((item) => (
               <ExerciseCard key={item.id} exercise ={item} />
           ))}
       </div>  

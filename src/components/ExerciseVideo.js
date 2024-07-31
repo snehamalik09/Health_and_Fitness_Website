@@ -25,13 +25,15 @@ const ExerciseVideo = ({youtubeVideos, exerciseDetail}) => {
 
   return (
     <div className='m-12 flex flex-col '>
-      <h1 className='capitalize font-bold text-2xl tracking-wider text-red-600'>Watch <span className='text-black'> {exerciseDetail.name} </span>  Exercise Videos</h1>
-      <div className='mt-10 flex justify-around items-center'>
+      <h1 className='capitalize font-bold text-lg md:text-2xl tracking-wider text-red-600'>Watch <span className='text-black'> {exerciseDetail.name} </span>  Exercise Videos</h1>
+      <div className='mt-10 flex-row justify-center items-center mx-auto md:flex md:justify-start md:mx-0  md:items-center md:gap-[10%]'>
         {
           youtubeVideos?.slice(0, 3).map((item, index) => (
+            
             <a key={index} href={`https://www.youtube.com/watch?v=${item.video.videoId}`} target="_blank" rel="noreferrer">
-              <img src={item.video.thumbnails[0].url} alt={item.video.title} className='w-80 h-44 object-cover border-4 border-[#f3d0d7]' />
-              <div className='text-center text-sm text-normal p-2'>
+              <img src={item.video.thumbnails[0].url} alt={item.video.title} className='w-80 h-48 items-center object-cover border-4 border-[#f3d0d7]' />
+
+              <div className=' text-center text-sm text-normal p-2'>
                 <p>{truncateTitle(item.video.title, 7)} </p>
               </div>
             </a>

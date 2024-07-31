@@ -5,9 +5,6 @@ import SearchExercise from '../components/SearchExercise'
 import {useState, useEffect} from 'react';
 
 const Home = () => {
-  useEffect(()=>{
-    document.title = "Health & Fitness Hub";
-  }, [])
 
   const [bodyPart, setBodyPart] = useState("all");
   const [exercises, setExercises] = useState([]);
