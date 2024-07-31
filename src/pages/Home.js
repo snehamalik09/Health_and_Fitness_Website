@@ -2,7 +2,7 @@ import React from 'react'
 import HeroBanner from '../components/HeroBanner'
 import Exercise from '../components/Exercise'
 import SearchExercise from '../components/SearchExercise'
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 const Home = () => {
 
